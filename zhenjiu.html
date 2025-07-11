@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Dr RootBro 穴位速查助手</title>
+  <style>
+    body { font-family: sans-serif; padding: 1em; background: #f9f9f9; }
+    h1 { color: #2f7a5f; }
+    .result { margin-top: 1em; background: #fff; padding: 1em; border-radius: 8px; }
+    img { max-width: 200px; margin-top: 10px; }
+    input { padding: 0.5em; font-size: 16px; width: 60%; }
+    button { padding: 0.5em 1em; font-size: 16px; margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>🌿 Dr RootBro · 穴位速查助手</h1>
+  <p>请输入常见症状（如：头痛、便秘、高血压）：</p>
+  <input type="text" id="symptom" placeholder="例如：失眠">
+  <button onclick="searchAcu()">查询</button>
+
+  <div id="results"></div>
+
+  <script>
+    const acupointData = {
+      "头痛": [
+        {
+          name: "百会",
+          pinyin: "Baihui",
+          jingluo: "督脉",
+          code: "GV20",
+          location: "头顶正中，两耳尖连线中点",
+          description: "提神醒脑，升阳举陷，改善头痛",
+          image: "images/baihui.png",
+          video: "https://www.youtube.com/watch?v=eMSePjAQXvA"
+        },
+        {
+          name: "风池",
+          pinyin: "Fengchi",
+          jingluo: "足少阳胆经",
+          code: "GB20",
+          location: "枕骨下，大筋间凹陷处",
+          description: "疏风清热，醒脑明目",
+          image: "images/fengchi.png",
+          video: "https://www.youtube.com/watch?v=eMSePjAQXvA"
+        }
+      ],
+      "失眠": [
+        {
+          name: "神门",
+          pinyin: "Shenmen",
+          jingluo: "手少阴心经",
+          code: "HT7",
+          location: "手腕掌侧小指下方凹陷",
+          description: "宁心安神，治疗失眠心悸",
+          image: "images/shenmen.png",
+          video: "https://www.youtube.com/watch?v=5m9B7MR72fA"
+        }
+      ]
+      // 可继续添加其他症状与穴位
+    };
+
+    function searchAcu() {
+      const input = document.getElementById('symptom').value.trim();
+      const container = document.getElementById('results');
+      container.innerHTML = '';
+
+      if (acupointData[input]) {
+        acupointData[input].forEach(ap => {
+          const block = `
+            <div class="result">
+              <h2>${ap.name} (${ap.pinyin})</h2>
+              <p><strong>经络：</strong> ${ap.jingluo}</p>
+              <p><strong>国家码：</strong> ${ap.code}</p>
+              <p><strong>位置：</strong> ${ap.location}</p>
+              <p><strong>功效：</strong> ${ap.description}</p>
+              <img src="${ap.image}" alt="${ap.name}">
+              <p><a href="${ap.video}" target="_blank">🔗 查看教学视频</a></p>
+            </div>`;
+          container.innerHTML += block;
+        });
+      } else {
+        container.innerHTML = `<p>未找到相关穴位，请确认输入是否正确。</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
