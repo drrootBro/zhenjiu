@@ -1,0 +1,36 @@
+body {
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  padding: 1em;
+}
+.lang-switch button {
+  margin-right: 10px;
+  padding: 6px 12px;
+}
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1em 0;
+}
+button {
+  background: #2f7a5f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8em 1em;
+  cursor: pointer;
+}
+.result img {
+  width: 200px;
+  height: 240px;
+  object-fit: cover;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
+iframe {
+  width: 360px;
+  height: 240px;
+  margin-top: 10px;
+  border: none;
+}
