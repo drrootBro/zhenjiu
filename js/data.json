@@ -1,0 +1,25 @@
+{
+  "头痛": {
+    "main": {
+      "name": "百会",
+      "pinyin": "Baihui",
+      "jingluo": "督脉",
+      "code": "GV20",
+      "location": "头顶正中，两耳尖连线中点",
+      "description": "提神醒脑，升阳举陷，改善头痛",
+      "image": "images/Baihui.png",
+      "video": "https://www.youtube.com/embed/eMSePjAQXvA"
+    },
+    "sub": [
+      {
+        "name": "风池",
+        "pinyin": "Fengchi",
+        "jingluo": "胆经",
+        "code": "GB20",
+        "location": "枕骨下，大筋间凹陷处",
+        "description": "疏风清热，醒脑明目",
+        "image": "images/Fengchi.png"
+      }
+    ]
+  }
+}
