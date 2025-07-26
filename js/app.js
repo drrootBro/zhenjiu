@@ -1,4 +1,3 @@
-
 import { data } from './data.js';
 import { getLang, t } from './i18n.js';
 
@@ -17,7 +16,7 @@ function renderMenu() {
   symptoms.forEach(sym => {
     const btn = document.createElement('button');
     btn.textContent = sym;
-    btn.onclick = () => showDetails(sym, btn);
+    btn.onclick = () => showDetails(sym, btn);  // 关键：传入 btn 本身
     menu.appendChild(btn);
   });
 }
@@ -27,7 +26,7 @@ function clearResults() {
 }
 
 function showDetails(symptom, clickedButton) {
-  // 确保激活按钮样式生效
+  // 高亮当前按钮
   document.querySelectorAll('#menu button').forEach(btn => {
     btn.classList.remove('active');
   });
@@ -37,12 +36,9 @@ function showDetails(symptom, clickedButton) {
   if (!entry) return;
 
   const main = entry.main;
-
   let html = `
     <div class="result">
-      <h3 class="symptom-title" style="color:#2f7a5f; font-size: 1.3em;">
-        ${getLang() === 'zh' ? '你选择的症状：' : 'Selected Symptom:'} ${symptom}
-      </h3>
+      <h3 style="color:#2f7a5f;">${getLang() === 'zh' ? '你选择的症状：' : 'Selected Symptom:'} ${symptom}</h3>
       <h3>${main.name} (${main.pinyin})</h3>
       <p><strong>${getLang() === 'zh' ? '经络' : 'Meridian'}:</strong> ${main.jingluo}</p>
       <p><strong>${getLang() === 'zh' ? '穴位码' : 'Code'}:</strong> ${main.code}</p>
@@ -70,3 +66,4 @@ function showDetails(symptom, clickedButton) {
 }
 
 window.addEventListener('DOMContentLoaded', renderPage);
+
