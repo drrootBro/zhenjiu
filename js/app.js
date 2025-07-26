@@ -1,3 +1,4 @@
+
 import { data } from './data.js';
 import { getLang, t } from './i18n.js';
 
@@ -16,7 +17,7 @@ function renderMenu() {
   symptoms.forEach(sym => {
     const btn = document.createElement('button');
     btn.textContent = sym;
-    btn.onclick = () => showDetails(sym);
+    btn.onclick = () => showDetails(sym, btn);
     menu.appendChild(btn);
   });
 }
@@ -25,13 +26,23 @@ function clearResults() {
   document.getElementById('results').innerHTML = '';
 }
 
-function showDetails(symptom) {
+function showDetails(symptom, clickedButton) {
+  // 确保激活按钮样式生效
+  document.querySelectorAll('#menu button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if (clickedButton) clickedButton.classList.add('active');
+
   const entry = data[getLang()].content[symptom];
   if (!entry) return;
 
   const main = entry.main;
+
   let html = `
     <div class="result">
+      <h3 class="symptom-title" style="color:#2f7a5f; font-size: 1.3em;">
+        ${getLang() === 'zh' ? '你选择的症状：' : 'Selected Symptom:'} ${symptom}
+      </h3>
       <h3>${main.name} (${main.pinyin})</h3>
       <p><strong>${getLang() === 'zh' ? '经络' : 'Meridian'}:</strong> ${main.jingluo}</p>
       <p><strong>${getLang() === 'zh' ? '穴位码' : 'Code'}:</strong> ${main.code}</p>
@@ -42,7 +53,6 @@ function showDetails(symptom) {
   `;
 
   if (entry.sub && Array.isArray(entry.sub)) {
-console.log('副穴位语言判断：', getLang());
     html += `<h4>${getLang() === 'zh' ? '副穴位' : 'Sub Points'}:</h4>`;
     html += entry.sub.map(ap => `
       <div class="subpoint">
@@ -59,6 +69,5 @@ console.log('副穴位语言判断：', getLang());
   document.getElementById('results').innerHTML = html;
 }
 
-
 window.addEventListener('DOMContentLoaded', renderPage);
-console.log("✅ app.js loaded and running");
+
