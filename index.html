@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f7a5f">
+
   <meta charset="UTF-8">
   <title data-i18n="pageTitle">Dr RootBro · 慢性病穴位速查助手</title>
   <link rel="stylesheet" href="CSS/style.css">
@@ -23,6 +26,14 @@
   <script type="module" src="js/data.js"></script>
   <script type="module" src="js/i18n.js"></script>
   <script type="module" src="js/app.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(reg => console.log('Service Worker registered', reg))
+      .catch(err => console.error('Service Worker registration failed', err));
+  }
+</script>
+
 </body>
 </html>
 
