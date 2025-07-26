@@ -70,10 +70,3 @@ function showDetails(symptom, clickedButton) {
 }
 
 window.addEventListener('DOMContentLoaded', renderPage);
-let html = `
-  <div class="result">
-    <h3 style="color:#2f7a5f;">你选择的症状：${symptom}</h3>
-    ...
-</div>
-`;
-
