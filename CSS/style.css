@@ -35,6 +35,11 @@ button {
   text-align: center;
   flex-grow: 1;
 }
+button.active {
+  background-color: #145a44;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
 
 .result img {
   width: 200px;
