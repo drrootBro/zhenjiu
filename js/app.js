@@ -61,4 +61,3 @@ console.log('副穴位语言判断：', getLang());
 
 
 window.addEventListener('DOMContentLoaded', renderPage);
-
