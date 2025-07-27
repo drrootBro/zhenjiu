@@ -23,6 +23,11 @@
   <main>
     <p data-i18n="chooseSymptom">请选择症状：</p>
     <div id="menu" class="menu"></div>
+    <div style="margin: 1em 0; text-align: center;">
+    <button onclick="localStorage.removeItem('selectedSymptom'); location.reload();">
+      🔄 清除选择 / Reset
+    </button>
+  </div>
     <div id="results"></div>
   </main>
 
@@ -38,9 +43,7 @@
 </script>
 
 </body>
-  <button onclick="localStorage.removeItem('selectedSymptom'); location.reload();">
-  🔄 清除选择 / Reset
-</button>
+  
 
 </html>
 
